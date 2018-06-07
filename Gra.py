@@ -1,4 +1,5 @@
 def gra():
+    #mozna by w sumie zrobic jakas ladna ramke
     tabelka= [None] + list(range(1, 10))
     wygrane = [
        (1, 2, 3),
@@ -53,4 +54,7 @@ def gra():
 while True:
     gra()
     if input("Zagraj ponownie (y/n)") != "y":
-        break
+        raise SystemExit
+        #break
+        #dobra powinno wyrzucac jak sie wcisnie cos innego od y
+#zamiast brejka mozna by bylo zrobic zeby sie program zamykal jak juz nie chca grac
