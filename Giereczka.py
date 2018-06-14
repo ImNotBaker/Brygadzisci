@@ -5,6 +5,7 @@ import random
 def drawBoard(board):
 
 #Plansza do gry zrobiona ze stringsów, żeby to jakoś wyglądało.
+#I już jest taka jak poprzednio heh.
     
      print(board[1], board[2], board[3])
      print(board[4], board[5], board[6])
@@ -29,6 +30,7 @@ def inputPlayerLetter():
 def whoGoesFirst():
 
 #A to wybiera losowo kto zaczyna (0 - komputr, 1 - żyjątko)
+#Aka program losuje cyfrę - 0 albo 1 i w zależności od wyniku kto inny zaczyna grę.
 
     if random.randint(0, 1) == 0:
         return 'Komputer'
@@ -40,11 +42,13 @@ def playAgain():
     print('Czy jesteś już uzależniony od tej wspaniałej gry i chcesz zagrać ponownie? (tak lub nie)')
     return input().lower().startswith('tak')
 
+#Funkcja definiująca ruch, tak ogólnie)
 def makeMove(board, letter, move):
     board[move] = letter
 
 def isWinner(bo, le):
 #Funkcja zwraca wartość True, kiedy wygra znaczek gracza.
+#Board = bo, Letter = le
 #Board zostało skrócone do bo, letter do le. Mniej pisanka na propsie.
 
     return ((bo[1] == le and bo[2] == le and bo[3] == le) or #góra
@@ -58,6 +62,7 @@ def isWinner(bo, le):
 
 def getBoardCopy(board):
 #Robi kopię planszy i ją zwraca, jakkolwiek by to nie brzmiało.
+#Szczerze to nie wiem do czego to, ale bez tego nie działa
     dupeBoard = []
 
     for i in board:
