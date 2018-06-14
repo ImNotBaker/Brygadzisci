@@ -1,5 +1,7 @@
 #Super kółko i krzyżyk z chyba działającym AI
+#Miało być łatwe, a nie jest :(
 
+#Użyte aż raz, łał
 import random
 
 def drawBoard(board):
@@ -50,6 +52,7 @@ def isWinner(bo, le):
 #Funkcja zwraca wartość True, kiedy wygra znaczek gracza.
 #Board = bo, Letter = le
 #Board zostało skrócone do bo, letter do le. Mniej pisanka na propsie.
+#To są ogólnie wygrywające kombinacje, też troche bardziej pogmatwane niż wcześniej
 
     return ((bo[1] == le and bo[2] == le and bo[3] == le) or #góra
     (bo[4] == le and bo[5] == le and bo[6] == le) or #środeczek
@@ -121,16 +124,19 @@ def getComputerMove(board, computerLetter):
                 return i
 
 #Komputer zajmie jeden z rogów, o ile są wolne (wybiera losowo spomiędzy tych niezajętych)
+#Zawsze zajmuje skubaniec
 
     move = chooseRandomMoveFromList(board, [1, 3, 7, 9])
     if move != None:
         return move
 
 #Komputer zajmie środeczek, o ile jest wolny.
+#Rzadko mu się zdarza
     if isSpaceFree(board, 5):
         return 5
 
 #Komputer zajmie jedno z pól wychodzących ze środeczka.
+#A to już w ogóle
 
     return chooseRandomMoveFromList(board, [2, 4, 6, 8])
 
@@ -164,6 +170,8 @@ while True:
             move = getPlayerMove(theBoard)
             makeMove(theBoard, playerLetter, move)
 
+#Warunki do ogarnięcia wygranej
+            
             if isWinner(theBoard, playerLetter):
                 drawBoard(theBoard)
                 print('Juhu, udało ci się wygrać. To niesamowite!')
@@ -182,6 +190,8 @@ while True:
             move = getComputerMove(theBoard, computerLetter)
             makeMove(theBoard, computerLetter, move)
 
+ #A tutaj waruneczki do ogarnięcia przegranej
+        
             if isWinner(theBoard, computerLetter):
                 drawBoard(theBoard)
                 print('Komputer cię opykał, to całkiem przykre')
